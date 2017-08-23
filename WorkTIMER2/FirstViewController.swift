@@ -10,11 +10,12 @@ import UIKit
 
 class FirstViewController: UIViewController {
     
-    //var to check if start button was clicked
+    //define some variables
     var buttonStartClicked:Int = 0;
-    
-    var time = 0.0
-    var timer = Timer()
+    //var dateStart:Date?=nil;
+    //var dateStop:Date?=nil;
+    //var interval:Date?=nil;
+    var dateStart:NSDate? = nil
     
     @IBOutlet weak var countToday: UILabel!
     @IBOutlet weak var countBreak: UILabel!
@@ -35,11 +36,18 @@ class FirstViewController: UIViewController {
     // click on button start
     @IBAction func getStartTime(sender: UIButton) {
         
-        //set var for click
-        buttonStartClicked = 1;
+        if buttonStartClicked < 1 {
+            //set var for click
+            buttonStartClicked = 1;
         
-        countToday.text = " bla bla"
+            dateStart  = NSDate()
+            print (dateStart!)
         
+            countToday.text = " bla bla"
+        
+        } else {
+            print ("dont click start more than once")
+        }
     }
     
     
@@ -50,7 +58,14 @@ class FirstViewController: UIViewController {
         if buttonStartClicked > 0 {
             print ("button stop")
             
+            let dateStop = NSDate();
+            print (dateStop)
+            
             buttonStartClicked = 0;
+            
+            let interval = dateStop.timeIntervalSince(dateStart! as Date);
+            print (interval)
+            
         } else {
             print ("dont click stop before start")
         }
