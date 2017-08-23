@@ -34,17 +34,11 @@ class FirstViewController: UIViewController {
     
     // click on button start
     @IBAction func getStartTime(sender: UIButton) {
-
-
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: (ourCustomMethod(sender:)), userInfo: nil, repeats: true)
-        
         
         //set var for click
         buttonStartClicked = 1;
         
-        
         countToday.text = " bla bla"
-        
         
     }
     
@@ -55,9 +49,6 @@ class FirstViewController: UIViewController {
         //do only if start button was clicked
         if buttonStartClicked > 0 {
             print ("button stop")
-            
-            print(timer);
-            
             
             buttonStartClicked = 0;
         } else {
