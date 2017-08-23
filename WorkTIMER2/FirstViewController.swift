@@ -13,15 +13,23 @@ class FirstViewController: UIViewController {
     //define some variables
     var buttonStartClicked:Int = 0;
     var dateStart:NSDate? = nil
+    var lengthToday:String="";
+    
     
     @IBOutlet weak var countToday: UILabel!
     @IBOutlet weak var countBreak: UILabel!
     @IBOutlet weak var countThisWeek: UILabel!
     @IBOutlet weak var countLastWeek: UILabel!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        countToday.text="";
+        countBreak.text="";
+        countThisWeek.text="";
+        countLastWeek.text="";
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +45,8 @@ class FirstViewController: UIViewController {
             //set var for click
             buttonStartClicked = 1;
         
+            countToday.text="";
+            
             dateStart  = NSDate()
         
             
@@ -58,11 +68,24 @@ class FirstViewController: UIViewController {
             let interval = dateStop.timeIntervalSince(dateStart! as Date);
             print (interval)
             
-            countToday.text = " bla bla"
+            lengthToday = stringFromTimeInterval(interval: interval);
+            
+            
+            countToday.text = lengthToday;
             
         }
     }
     
+    
+    
+    
+    
+    func stringFromTimeInterval(interval: TimeInterval) -> String {
+        let interval = Int(interval)
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        return String(format: " %02dh %02dmin", hours, minutes)
+    }
     
     
     
