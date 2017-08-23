@@ -12,9 +12,6 @@ class FirstViewController: UIViewController {
     
     //define some variables
     var buttonStartClicked:Int = 0;
-    //var dateStart:Date?=nil;
-    //var dateStop:Date?=nil;
-    //var interval:Date?=nil;
     var dateStart:NSDate? = nil
     
     @IBOutlet weak var countToday: UILabel!
@@ -41,12 +38,9 @@ class FirstViewController: UIViewController {
             buttonStartClicked = 1;
         
             dateStart  = NSDate()
-            print (dateStart!)
         
-            countToday.text = " bla bla"
+            
         
-        } else {
-            print ("dont click start more than once")
         }
     }
     
@@ -56,18 +50,16 @@ class FirstViewController: UIViewController {
         
         //do only if start button was clicked
         if buttonStartClicked > 0 {
-            print ("button stop")
             
             let dateStop = NSDate();
-            print (dateStop)
             
             buttonStartClicked = 0;
             
             let interval = dateStop.timeIntervalSince(dateStart! as Date);
             print (interval)
             
-        } else {
-            print ("dont click stop before start")
+            countToday.text = " bla bla"
+            
         }
     }
     
